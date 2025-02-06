@@ -1,8 +1,12 @@
 const container = document.querySelector(".container");
+const button = document.querySelector("button");
 let containerWidth = container.getBoundingClientRect().width;
 let coefficient = 16;
 
-function drawGrid(coefficient, containerWidth) {
+drawGrid(16);
+
+function drawGrid(coefficient) {
+  container.innerHTML = '';
   for (let i = 0; i < coefficient; i++) {
     const row = document.createElement("div");
     let colSize = containerWidth.toFixed(0) / coefficient + "px";
@@ -15,10 +19,13 @@ function drawGrid(coefficient, containerWidth) {
       col.style.flexShrink = "1";
       row.appendChild(col);
     }
-
     container.appendChild(row);
   }
 }
+
+button.addEventListener('click', () => {
+  drawGrid(prompt("Enter the number of squares per row"));
+});
 
 window.addEventListener('resize', () => {
   containerWidth = container.getBoundingClientRect().width;
