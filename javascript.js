@@ -17,10 +17,17 @@ function drawGrid(coefficient) {
       col.style.width = colSize;
       col.style.height = colSize;
       col.style.flexShrink = "1";
+      addHover(col);
       row.appendChild(col);
     }
     container.appendChild(row);
   }
+}
+
+function addHover(square) {
+  square.addEventListener('mouseover', () => {
+    square.style.backgroundColor = "#ddba3d";
+  });
 }
 
 button.addEventListener('click', () => {
