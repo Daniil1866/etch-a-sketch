@@ -29,10 +29,15 @@ function addHover(square) {
 
   square.addEventListener('mouseover', () => {
     let currentOpacity = parseFloat(square.dataset.opacity);
-    if(currentOpacity < 1){
+
+    if (!square.dataset.color) {
+      square.dataset.color = getRandomRGB();
+    }
+
+    if (currentOpacity < 1) {
       currentOpacity += 0.2;
       square.dataset.opacity = currentOpacity;
-      square.style.backgroundColor = "#ddba3d";
+      square.style.backgroundColor = square.dataset.color;
       square.style.opacity = currentOpacity;
     }
   });
