@@ -38,6 +38,13 @@ function addHover(square) {
   });
 }
 
+function getRandomRGB() {
+  const r = Math.floor(Math.random() * 256);
+  const g = Math.floor(Math.random() * 256);
+  const b = Math.floor(Math.random() * 256);
+  return `rgb(${r}, ${g}, ${b})`;
+}
+
 button.addEventListener('click', () => {
   let gridSize = prompt("Enter the number of squares per row (max 100)");
   parseInt(gridSize, 10);
