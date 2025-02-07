@@ -24,7 +24,16 @@ function drawGrid(coefficient) {
 }
 
 button.addEventListener('click', () => {
-  drawGrid(prompt("Enter the number of squares per row"));
+  let gridSize = prompt("Enter the number of squares per row (max 100)");
+  parseInt(gridSize, 10);
+
+  if (gridSize > 100 && !isNaN(gridSize)) {
+    alert("Your number is more than 100, a 100x100 grid will be created.");
+    drawGrid(100);
+  } else if (isNaN(gridSize) || gridSize === '' || gridSize === ' ' || gridSize == undefined) {
+    alert("Enter a valid number.");
+  }
+  else drawGrid(gridSize);
 });
 
 window.addEventListener('resize', () => {
