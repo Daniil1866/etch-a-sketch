@@ -25,8 +25,16 @@ function drawGrid(coefficient) {
 }
 
 function addHover(square) {
+  square.dataset.opacity = 0; // stores opacity directly in the element, across multiple events
+
   square.addEventListener('mouseover', () => {
-    square.style.backgroundColor = "#ddba3d";
+    let currentOpacity = parseFloat(square.dataset.opacity);
+    if(currentOpacity < 1){
+      currentOpacity += 0.2;
+      square.dataset.opacity = currentOpacity;
+      square.style.backgroundColor = "#ddba3d";
+      square.style.opacity = currentOpacity;
+    }
   });
 }
 
